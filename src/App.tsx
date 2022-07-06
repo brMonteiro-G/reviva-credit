@@ -1,11 +1,12 @@
-import React from 'react';
+import LastMoves from '@/components/LastMoves/LastMoves';
 
 function App() {
   return (
-    <div >
-      Hello World
-    </div>
-  );
+    <>
+    <LastMoves />
+ 
+    </>
+    );
 }
 
 export default App;
