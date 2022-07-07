@@ -1,13 +1,11 @@
-import Header from "@/components/Header/Index";
-import LastTransactions from "@/components/LastTransactions/Index";
+
 
 function App() {
   return (
-    <>
-    <Header/>
- 
-    </>
-    );
+    <div>
+      <h1>Hello World</h1>
+    </div>
+  );
 }
 
 export default App;
