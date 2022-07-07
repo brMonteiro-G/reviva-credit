@@ -1,9 +1,9 @@
-import React from 'react';
+import LimitBar from './components/LimitBar';
 
 function App() {
   return (
     <div >
-      Hello World
+      <LimitBar />
     </div>
   );
 }
