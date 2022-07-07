@@ -31,10 +31,7 @@ const Card = ({ name, brand, number, cvv, dueDate }: CardProps) => {
       <NameClientCard>{name}</NameClientCard>
       <NumberCard>{number}</NumberCard>
       <WrapperCardDetails>
-        <DateCard>
-          {dueDate < 10 ? "0" : ""}
-          {dueDate}/05/26
-        </DateCard>
+        <DateCard>{dueDate.toString().padStart(2, "0")}/05/26</DateCard>
         <CvvCard>{cvv}</CvvCard>
       </WrapperCardDetails>
       <FlagCard src={`/images/${brand}.svg`} alt="bandeira master card" />
