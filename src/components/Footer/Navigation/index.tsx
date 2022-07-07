@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { pathImage } from "./pathImage";
+import { pathsImage } from "./pathImage";
 import { ContainerLinks, IconActive, Icons } from "./styles";
 
 export interface PropsImage {
@@ -30,7 +30,7 @@ export default function Navigation() {
   };
   return (
     <ContainerLinks>
-      {pathImage.map((genre, idx) => (
+      {pathsImage.map((genre, idx) => (
         <Link to={genre.path} key={idx}>
           <CurrentIcon genre={genre} idx={idx} />
         </Link>
