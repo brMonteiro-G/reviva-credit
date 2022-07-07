@@ -1,12 +1,11 @@
-import LastMoves from '@/components/LastMoves/LastMoves';
+import LimitBar from './components/LimitBar';
 
 function App() {
   return (
-    <>
-    <LastMoves />
- 
-    </>
-    );
+    <div >
+      <LimitBar />
+    </div>
+  );
 }
 
 export default App;
