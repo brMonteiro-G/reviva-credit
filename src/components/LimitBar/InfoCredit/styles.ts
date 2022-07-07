@@ -1,5 +1,6 @@
+import { theme } from "@/styles/ThemeProvider";
 import styled from "styled-components";
-import { theme } from "styles/ThemeProvider";
+
 
 interface PositionProps {
   position: string;

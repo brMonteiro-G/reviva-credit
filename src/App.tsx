@@ -1,9 +1,7 @@
-import LimitBar from './components/LimitBar';
-
 function App() {
   return (
-    <div >
-      <LimitBar />
+    <div>
+      <h1>Hello World</h1>
     </div>
   );
 }
