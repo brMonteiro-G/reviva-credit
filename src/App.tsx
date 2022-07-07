@@ -1,8 +1,16 @@
+import CarouselCard from "@/components/ListCard";
+import Card from "@/components/ListCard/Card";
+
 function App() {
   return (
-    <div>
-      <h1>Hello World</h1>
-    </div>
+    <CarouselCard/>
+    // <Card
+    // name={""}
+    // brand= {"visa"} 
+    // number= {""}
+    // cvv= {""}
+    // dueDate= {0}
+    // />
   );
 }
 
