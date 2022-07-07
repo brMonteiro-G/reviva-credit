@@ -1,4 +1,4 @@
-import { theme } from "styles/ThemeProvider";
+import { theme } from "@/styles/ThemeProvider";
 import {
   CvvCard,
   DateCard,
