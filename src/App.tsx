@@ -1,12 +1,9 @@
-import LastMoves from '@/components/LastMoves/LastMoves';
-
 function App() {
   return (
-    <>
-    <LastMoves />
- 
-    </>
-    );
+    <div>
+      <h1>Hello World</h1>
+    </div>
+  );
 }
 
 export default App;
