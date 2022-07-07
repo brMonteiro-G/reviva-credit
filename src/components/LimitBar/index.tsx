@@ -1,4 +1,4 @@
-import { formactPrice } from "functions";
+import { formactPrice } from "@/functions";
 import { useEffect } from "react";
 import Bar from "./Bar";
 import InfoCredit from "./InfoCredit";
