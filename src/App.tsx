@@ -1,21 +1,11 @@
-import Header from "@/components/Header/Index";
+import CardInfo from "./components/CardInfo";
 
 function App() {
   return (
-    <>
-    <Header
-    
-    regards={`Olá `}
-    user={` ${'user'}`}
-
-    title='Seja bem vindo ao'
-    subtitle='Reviva Credit'
-
-    />
- 
-    </>
-    );
-
+    <div>
+      <CardInfo />
+    </div>
+  );
 }
 
 export default App;
