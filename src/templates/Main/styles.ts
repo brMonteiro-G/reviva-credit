@@ -1,11 +1,14 @@
 import styled from "styled-components";
 
-export const BaseFooter = styled.footer`
+export const ContainerMain = styled.main`
   align-items: center;
-  align-self: center;
   background-color: ${(props) => props.theme.colors.default_color};
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 752px;
   margin: auto;
-  padding: 2rem;
-  height: 60px;
+  margin-top: 50px;
   width: 375px;
 `;
