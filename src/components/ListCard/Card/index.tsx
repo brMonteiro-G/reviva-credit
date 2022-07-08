@@ -1,4 +1,4 @@
-import { theme } from "styles/ThemeProvider";
+import { theme } from "@/styles/ThemeProvider";
 import {
   CvvCard,
   DateCard,
@@ -12,13 +12,14 @@ import {
 
 interface CardProps {
   name: string;
-  brand: "visa" | "mastercard";
+  brand: string;
   number: string;
   cvv: string;
   dueDate: number;
+  onClick?: () => void;
 }
 
-const Card = ({ name, brand, number, cvv, dueDate }: CardProps) => {
+const Card = ({ name, brand, number, cvv, dueDate, onClick }: CardProps) => {
   let color = theme.colors.primary_color;
 
   if (brand === "visa") {
@@ -26,7 +27,7 @@ const Card = ({ name, brand, number, cvv, dueDate }: CardProps) => {
   }
 
   return (
-    <WrapperCard color={color}>
+    <WrapperCard color={color} onClick={onClick}>
       <TitleCard>Reviva Credit</TitleCard>
       <NameClientCard>{name}</NameClientCard>
       <NumberCard>{number}</NumberCard>

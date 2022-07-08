@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { theme } from "styles/ThemeProvider";
+import { theme } from "@/styles/ThemeProvider";
 
 export const WrapperCard = styled.section`
   background-color: ${(prop) => prop.color};
