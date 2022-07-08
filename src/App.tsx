@@ -1,19 +1,12 @@
-import Extract from "@/components/Extract/Index";
-import LastTransactions from "@/components/LastTransactions/Index";
-import LimitBar from "@/components/LimitBar";
+
+import CardInfo from "./components/CardInfo";
 
 function App() {
   return (
-    <>
-    
-    <Extract/>
-    <LastTransactions
-    page="first"
-    transactionsDisplayed={3}
-    />
-    </>
-    );
-
+    <div>
+      <CardInfo />
+    </div>
+  );
 }
 
 export default App;
