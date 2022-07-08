@@ -1,9 +1,21 @@
+import Header from "@/components/Header/Index";
+
 function App() {
   return (
-    <div>
-      <h1>Hello World</h1>
-    </div>
-  );
+    <>
+    <Header
+    
+    regards={`Olá `}
+    user={` ${'user'}`}
+
+    title='Seja bem vindo ao'
+    subtitle='Reviva Credit'
+
+    />
+ 
+    </>
+    );
+
 }
 
 export default App;
