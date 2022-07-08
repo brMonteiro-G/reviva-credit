@@ -17,8 +17,8 @@ root.render(
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <AppRouter />
-      <CarouselCard/>
-      {/*<App />*/}
+      
+      <App />
     </ThemeProvider>
   </React.StrictMode>
 );

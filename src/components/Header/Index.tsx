@@ -1,18 +1,26 @@
 import Circle from '@/components/Header/Circle/Index';
 import { HeaderContent, WelcomeUser } from '@/components/Header/Styles';
 
-export default function Header() {
+interface HeaderProps{
+regards?:string; 
+user?:string
+title:string
+subtitle:string
+
+
+}
+export default function Header({ regards,user, title, subtitle  }:HeaderProps) {
   return (
     <WelcomeUser>
       <div>
         <HeaderContent>
-          <p> Olá, </p>
-          <p>Renato!</p>
+          <p> {regards} </p>
+          <p>{user}</p>
         </HeaderContent>
         <HeaderContent>
-          <p>Bem vindo ao</p>
+          <p>{title}</p>
           <p>
-            <u>Reviva Credit</u>
+            <u>{subtitle}</u>
           </p>
         </HeaderContent>
       </div>

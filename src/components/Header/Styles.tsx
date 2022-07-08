@@ -5,6 +5,8 @@ export const WelcomeUser = styled.div`
   padding: 1%;
   p:nth-child(2n) {
     font-weight: ${(props) => props.theme.fonts.font_weight_contrast};
+    padding-left: 5px;
+
   }
 `;
 
@@ -14,8 +16,6 @@ export const HeaderContent = styled.div`
   p {
     font-size: ${(props) => props.theme.fonts.font_size_text_small};
   }
-  u{
-    padding-left: 5px;
-  }
+
 `;
 
