@@ -1,18 +1,16 @@
-import Header from "@/components/Header/Index";
+import Extract from "@/components/Extract/Index";
+import LastTransactions from "@/components/LastTransactions/Index";
+import LimitBar from "@/components/LimitBar";
 
 function App() {
   return (
     <>
-    <Header
     
-    regards={`Olá `}
-    user={` ${'user'}`}
-
-    title='Seja bem vindo ao'
-    subtitle='Reviva Credit'
-
+    <Extract/>
+    <LastTransactions
+    page="first"
+    transactionsDisplayed={3}
     />
- 
     </>
     );
 
