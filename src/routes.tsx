@@ -7,7 +7,7 @@ export default function AppRouter() {
     <Router>
       <Routes>
         <Route path="/" element={<PageDefault />}>
-          <Route index element={""} />
+          <Route path="/home" element={""} />
           <Route path="/wallet" element={""} />
           <Route path="/details" element={""} />
           <Route path="/settings" element={""} />
