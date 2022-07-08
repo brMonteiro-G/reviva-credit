@@ -1,8 +1,6 @@
-import { Card } from "./card";
-
-export interface Transaction {
+export interface ITransaction {
   id: string;
-  cardId: Card;
+  cardId: string;
   value: number;
   description: string;
   date: string;

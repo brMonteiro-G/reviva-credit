@@ -1,7 +1,5 @@
-import { User } from "./user";
-
-export interface Card {
-  userId: User;
+export interface ICard {
+  userId: string;
   id: string;
   brand: string;
   number: string;
