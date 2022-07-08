@@ -3,7 +3,7 @@ export const pathsImage = [
     id: 1,
     url: "../images/home.svg",
     description: "menu",
-    path: "/",
+    path: "/home",
   },
   {
     id: 2,
