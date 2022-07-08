@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const SectionCard = styled.section`
-  max-width: 375px;
+  max-width: 325px;
   max-height: 200px;
   background-color: #eeeeee;
   padding: 2rem 0rem;
