@@ -7,7 +7,6 @@ import { theme } from "./styles/ThemeProvider";
 
 import App from "./App";
 
-
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
@@ -16,7 +15,6 @@ root.render(
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <AppRouter />
-      <App />
     </ThemeProvider>
   </React.StrictMode>
 );

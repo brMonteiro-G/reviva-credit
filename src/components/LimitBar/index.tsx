@@ -1,3 +1,5 @@
+import { useCard } from "@/contexts/CardsContext";
+import { Users } from "@/contexts/mockData";
 import { formactPrice } from "@/functions";
 import { useEffect } from "react";
 import Bar from "./Bar";
@@ -12,6 +14,13 @@ const LimitBar = () => {
     const result = (utilizado * 100) / limite;
     return result.toFixed(2);
   };
+
+  const { cards, cardsByUser } = useCard();
+
+  const testeCart = cardsByUser(Users[0]);
+
+  console.log('limitBar', testeCart)
+
   useEffect(() => {
     calculatePercent();
   }, [limite, utilizado]);

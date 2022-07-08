@@ -3,7 +3,7 @@ export interface ICard {
   id: string;
   brand: string;
   number: string;
-  cvv: number;
+  cvv: string;
   limit: number;
   dueDate: number;
   expiresIn: string;
