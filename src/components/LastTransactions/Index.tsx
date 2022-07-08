@@ -9,17 +9,23 @@ import {
 } from '@/components/LastTransactions/Styles';
 import { getTransactions } from '@/services/getTransactions';
 
-export default function LastTransactions() {
+interface TransactionsProps {
+  page: 'first' | 'second'
+  transactionsDisplayed: number;
+}
+export default function LastTransactions({ transactionsDisplayed, page }: TransactionsProps) {
   const alguma = getTransactions();
   console.log(alguma);
 
   return (
     <>
-      <Container>
-        <Title>
+      <Container
+        itemProp={page}
+      >
+        {page === 'first' ? <Title>
           <p>Últimas</p>
           <p>movimentações</p>
-        </Title>
+        </Title> : <></>}
         <Content>
           <PaymentDescription>
             <p>10/05</p>
@@ -32,11 +38,12 @@ export default function LastTransactions() {
             <p>- 150,00</p>
           </PaymentValue>
         </Content>
-        <DivShowAll>
+     
+        {page === 'first' ? <DivShowAll>
           <a href='/'>
             <u>Ver mais</u>
           </a>
-        </DivShowAll>
+        </DivShowAll> : <></>}
       </Container>
     </>
   );
