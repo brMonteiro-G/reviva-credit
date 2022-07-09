@@ -5,7 +5,8 @@ export const StyledProgressBar = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  max-width: 31.8rem;
+  /* max-width: 31.8rem; */
+  width: 100%;
   height: 9.3rem;
   background-color: #eeeeee;
 `;

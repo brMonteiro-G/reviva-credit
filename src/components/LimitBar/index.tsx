@@ -12,6 +12,7 @@ const LimitBar = () => {
     const result = (utilizado * 100) / limite;
     return result.toFixed(2);
   };
+
   useEffect(() => {
     calculatePercent();
   }, [limite, utilizado]);
