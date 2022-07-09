@@ -4,7 +4,7 @@ export const WrapperCard = styled.section`
   background-color: ${(prop) => prop.color};
   border-radius: 1.8em;
   box-shadow: 0px 4px 5px 0px #00000050;
-  color: white;
+  color: ${(prop) => prop.theme.colors.white_color};
   display: grid;
   grid-template-areas:
     "TitleCard TitleCard"
