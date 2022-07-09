@@ -39,6 +39,7 @@ interface MonthItemProps {
   `;
   
   export const MonthItem = styled.p<MonthItemProps>`
+    color: ${(props) => props.theme.colors.white_color};
     font-size: ${theme.fonts.font_size_text_large};
     font-stretch: condensed;
     font-weight: ${theme.fonts.font_weight_normal};
