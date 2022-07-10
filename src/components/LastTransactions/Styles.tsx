@@ -27,6 +27,7 @@ export const Title = styled.strong`
   line-height: 19px;
   p:last-child {
     font-weight: ${(props) => props.theme.fonts.font_weight_contrast};
+    width:max-content;
   }
 `;
 
@@ -55,7 +56,7 @@ export const Slash = styled.div`
 `;
 
 export const DivShowAll = styled.div`
-  height: 60%;
+  height: 150px;
   display: flex;
   justify-content: flex-end;
   align-items: end;
