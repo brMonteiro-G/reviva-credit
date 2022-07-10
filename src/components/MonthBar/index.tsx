@@ -23,10 +23,10 @@ export const updateFocusState = (
 export const moveScrollOnClick = (focusedCard: number, index: number) => {
   const currentItems = document.querySelector("section");
   const difference = index - focusedCard;
-
+  
   if (index - difference === focusedCard) {
     currentItems?.scrollBy({
-      left: +(difference * 90),
+      left: +(difference * (90 * 2)),
       behavior: "smooth",
     });
   }
