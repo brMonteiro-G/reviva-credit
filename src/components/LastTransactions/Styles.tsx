@@ -1,13 +1,17 @@
-import styled from 'styled-components';
-const PATH_SVG = '/images/wave.svg'
+import styled from "styled-components";
+const PATH_SVG = "/images/wave.svg";
 
-export const ContainerLastTransactions = styled.div`
-  background-color:${props => props.itemProp == 'first' ?
-    props.theme.colors.default_color:
-    props.theme.colors.primary_color 
-  };
-  background-image: url(${(props) => props.itemProp == 'first' ? PATH_SVG : ''});
-  background-position: top;
+export const Container = styled.div`
+  padding: 1%;
+  width: 375px;
+  height: 502px;
+  background-image: url(${(props) =>
+    props.itemProp == "first" ? PATH_SVG : ""});
+  background-color: ${(props) =>
+    props.itemProp == "first"
+      ? props.theme.colors.white_color
+      : props.theme.colors.primary_color};
+
   background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
@@ -34,7 +38,7 @@ export const Title = styled.strong`
   margin: .5rem 0;
   p:last-child {
     font-weight: ${(props) => props.theme.fonts.font_weight_contrast};
-    width:max-content;
+    width: min-content;
   }
 `;
 
