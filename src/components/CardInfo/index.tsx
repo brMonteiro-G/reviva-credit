@@ -1,4 +1,3 @@
-import { useCard } from "@/contexts/cardsContext";
 import { ICard } from "@/types/ICard";
 import CardImageDetail from "./CardImageDetail";
 import CardInfoDetail from "./CardInfoDetail";
@@ -9,13 +8,13 @@ interface CardInfoProps {
 }
 
 const CardInfo = ({ card }: CardInfoProps) => {
-  const { userCard } = useCard();
+  // const { userCard } = useCard();
 
   return (
     <SC.SectionCard>
       <CardImageDetail
         urlImage={"/images/mastercard.svg"}
-        nameCardUser={userCard.name}
+        nameCardUser={'Renato'}
         numberCard={card.number}
       />
       <SC.DivSeparator>

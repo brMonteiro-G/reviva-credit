@@ -35,8 +35,8 @@ const CardsProvider = ({ children }: CardsContextProps) => {
   const cardsFiltered = cards.filter((card) => card.userId === userCard.id);
 
   useEffect(() => {
-    setCards(cardsFiltered);
-  }, [userCard]);
+    // setCards(cardsFiltered);
+  }, []);
 
   useEffect(() => {
     // teste();

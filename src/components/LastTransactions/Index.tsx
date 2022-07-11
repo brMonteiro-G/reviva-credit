@@ -9,7 +9,7 @@ import {
 
 } from "@/components/LastTransactions/Styles";
 import { serviceTransactions } from "@/services/ServiceTransactions";
-import { ITransaction } from "@/types/ITransaction";
+import { ITransactions } from "@/types/ITransactions";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { listLastTransactions } from "./listLastTransactions";
@@ -26,7 +26,7 @@ export default function LastTransactions({
  
 
 
-  const [transactions, setTransactions] = useState<ITransaction[]>([]);
+  const [transactions, setTransactions] = useState<ITransactions[]>([]);
 
   useEffect(()=>{
     serviceTransactions(setTransactions)
