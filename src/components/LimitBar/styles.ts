@@ -1,20 +1,19 @@
 import styled from "styled-components";
 
 export const StyledProgressBar = styled.div`
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  /* max-width: 31.8rem; */
-  width: 100%;
   height: 9.3rem;
-  background-color: #eeeeee;
+  justify-content: space-around;
+  margin: 0 auto;
+  margin: 1.7em 0;
+  width: 100%;
 `;
 
 export const Title = styled.h2`
-  text-align: left;
   font-weight: 300;
   margin-left: 1rem;
+  text-align: left;
 `;
 
 export const ContainerInfoCredit = styled.div`
