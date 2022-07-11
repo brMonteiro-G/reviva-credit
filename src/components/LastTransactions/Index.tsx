@@ -1,13 +1,16 @@
 import {
-  ContainerLastTransactions,
+  Container,
   Content,
   DivShowAll,
   PaymentDescription,
   PaymentValue,
   Slash,
   Title,
+
 } from "@/components/LastTransactions/Styles";
-import { getTransactions } from "@/services/getTransactions";
+import { serviceTransactions } from "@/services/ServiceTransactions";
+import { ITransaction } from "@/types/ITransaction";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { listLastTransactions } from "./listLastTransactions";
 
@@ -15,16 +18,23 @@ interface TransactionsProps {
   page: "first" | "second";
   transactionsDisplayed?: number;
 }
+
 export default function LastTransactions({
   transactionsDisplayed,
   page,
 }: TransactionsProps) {
-  const alguma = getTransactions();
-  console.log(alguma);
+ 
 
+
+  const [transactions, setTransactions] = useState<ITransaction[]>([]);
+
+  useEffect(()=>{
+    serviceTransactions(setTransactions)
+  },[])
   return (
+
     <>
-      <ContainerLastTransactions itemProp={page}>
+      <Container itemProp={page}>
         <>
           {page === "first" ? (
             <Title>
@@ -55,7 +65,7 @@ export default function LastTransactions({
             <></>
           )}
         </>
-      </ContainerLastTransactions>
+      </Container>
     </>
   );
 }

@@ -15,6 +15,3 @@ export async function serviceUser(setUser: Dispatch<SetStateAction<IUser>>):Prom
     const aux = await data;
   
 setUser(aux[0])  
-  }
-
-  
