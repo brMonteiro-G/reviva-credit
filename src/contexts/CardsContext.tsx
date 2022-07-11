@@ -39,6 +39,13 @@ const CardsProvider = ({ children }: CardsContextProps) => {
     setCards(cardsFiltered);
   }, [userCard]);
 
+  useEffect(() => {
+    // teste();
+    console.log('cards',cards);
+    
+  }, [cards]);
+  console.log(cards);
+  
   return (
     <CardsContext.Provider value={{ cards, userCard }}>
       {children}

@@ -1,7 +1,8 @@
+import Footer from "@/components/Footer";
+import { CardsProvider } from "@/contexts/cardsContext";
+import { TransactionsProvider } from "@/contexts/transactionsContext";
+import { UsersProvider } from "@/contexts/usersContext";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { CardsProvider } from "./contexts/cardsContext";
-import { TransactionsProvider } from "./contexts/transactionsContext";
-import { UsersProvider } from "./contexts/usersContext";
 import Details from "./pages/details";
 import Home from "./pages/home";
 import Main from "./templates/Main";
