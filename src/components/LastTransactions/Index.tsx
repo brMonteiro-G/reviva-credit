@@ -1,5 +1,5 @@
 import {
-  ContainerLastTransactions,
+  Container,
   Content,
   DivShowAll,
   PaymentDescription,
@@ -34,7 +34,7 @@ export default function LastTransactions({
   return (
 
     <>
-      <ContainerLastTransactions itemProp={page}>
+      <Container itemProp={page}>
         <>
           {page === "first" ? (
             <Title>
@@ -65,7 +65,7 @@ export default function LastTransactions({
             <></>
           )}
         </>
-      </ContainerLastTransactions>
+      </Container>
     </>
   );
 }

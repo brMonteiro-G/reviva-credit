@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import { CardsProvider } from "@/contexts/CardsContext";
 import { TransactionsProvider } from "@/contexts/transactionsContext";
 import { UsersProvider } from "@/contexts/usersContext";
@@ -13,7 +14,7 @@ export default function AppRouter() {
         <CardsProvider>
           <TransactionsProvider>
             <Routes>
-              <Route path="/" element={<PageDefault />}>
+              <Route path="/" element={<Home/>}>
                 <Route path="/wallet" element={""} />
                 <Route path="/details" element={""} />
                 <Route path="/settings" element={""} />
