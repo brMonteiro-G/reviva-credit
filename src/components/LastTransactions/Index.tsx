@@ -8,7 +8,9 @@ import {
   Title,
 
 } from "@/components/LastTransactions/Styles";
-import { getTransactions } from "@/services/getTransactions";
+import { serviceTransactions } from "@/services/ServiceTransactions";
+import { ITransaction } from "@/types/ITransaction";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { listLastTransactions } from "./listLastTransactions";
 
