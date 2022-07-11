@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { CardsContext, useCard } from "@/contexts/CardsContext";
+import { serviceCards } from "@/services/ServiceCards";
+import { useContext, useEffect, useState } from "react";
 import { moveScrollOnClick, updateFocusState } from "../MonthBar";
 import Card from "./Card";
-import { listCard } from "./listCard";
 import { ContainerListCard, ListCard } from "./style";
 
 interface ListCardProps {
@@ -10,11 +11,16 @@ interface ListCardProps {
 
 const CarouselCard = ({ onClick }: ListCardProps) => {
   const [focusedCard, setFocusedCard] = useState(0);
+  const { cards, setCards } = useCard();
+
+  console.log("cards",cards);
 
   useEffect(() => {
     console.log(focusedCard);
-  }, [focusedCard]);
+  }, [focusedCard, cards]);
 
+ 
+  
   return (
     <>
       <ContainerListCard>
@@ -24,7 +30,7 @@ const CarouselCard = ({ onClick }: ListCardProps) => {
             updateFocusState("section", setFocusedCard, 1);
           }}
         >
-          {listCard.map((card, index) => (
+          {cards.map((card, index) => (
             <Card
               key={index}
               name="Renato Neto"
