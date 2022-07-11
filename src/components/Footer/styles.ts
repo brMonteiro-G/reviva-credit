@@ -1,11 +1,12 @@
 import styled from "styled-components";
 
 export const BaseFooter = styled.footer`
-  align-items: center;
-  align-self: center;
+  align-self: flex-end;
   background-color: ${(props) => props.theme.colors.default_color};
-  margin: auto;
-  padding: 2rem;
   height: 60px;
-  width: 375px;
+  padding: 2rem 0;
+  width: 100%;
+  &:active {
+    -webkit-tap-highlight-color: transparent;
+  }
 `;

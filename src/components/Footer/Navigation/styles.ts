@@ -14,5 +14,5 @@ export const Icons = styled.img`
 
 export const ContainerLinks = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 `;
