@@ -7,7 +7,6 @@ import {
   useEffect,
   useState,
 } from "react";
-import { Cards } from "./mockData";
 import { useUsers } from "./usersContext";
 
 type CardsContextProps = {
@@ -20,7 +19,7 @@ type CardContextType = {
 };
 
 const initialValue = {
-  cards: Cards,
+  cards: [],
   userCard: { id: "", name: "" },
 };
 

@@ -5,8 +5,7 @@ export const Container = styled.div`
   padding: 1%;
   width: 375px;
   height: 502px;
-  background-image: url(${(props) =>
-    props.itemProp == "first" ? PATH_SVG : ""});
+  background-image: url(${(props) => props.itemProp == "first" ? PATH_SVG : ""});
   background-color: ${(props) =>
     props.itemProp == "first"
       ? props.theme.colors.white_color
@@ -15,10 +14,10 @@ export const Container = styled.div`
   background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
-  height: ${(props) => props.itemProp == 'first' ? '310px' : '502px' };
+  height: ${(props) => (props.itemProp == "first" ? "310px" : "502px")};
   overflow: auto;
   padding: 3em 2em 2em 2em;
-  padding-right: ${(props) => props.itemProp == 'first' ? '2em' : '1em' };
+  padding-right: ${(props) => (props.itemProp == "first" ? "2em" : "1em")};
   width: 375px;
   &::-webkit-scrollbar {
     width: 10px;
@@ -35,7 +34,7 @@ export const Title = styled.strong`
   font-size: ${(props) => props.theme.fonts.font_size_text_medium};
   font-weight: ${(props) => props.theme.fonts.font_weight_normal};
   line-height: 19px;
-  margin: .5rem 0;
+  margin: 0.5rem 0;
   p:last-child {
     font-weight: ${(props) => props.theme.fonts.font_weight_contrast};
     width: min-content;
@@ -72,7 +71,7 @@ export const DivShowAll = styled.div`
   font-size: ${(props) => props.theme.fonts.font_size_text_small};
   font-weight: ${(props) => props.theme.fonts.font_weight_normal};
   margin-top: auto;
-  &::after{
+  &::after {
     border: none;
     content: " ->";
     height: 5px;

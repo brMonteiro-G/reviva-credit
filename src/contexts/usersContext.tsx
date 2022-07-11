@@ -6,7 +6,6 @@ import {
   useEffect,
   useState,
 } from "react";
-import { Users } from "./mockData";
 
 export interface UsersProviderProps {
   children: ReactNode;
@@ -18,14 +17,14 @@ interface IUserContextProps {
 }
 
 export const UsersContext = createContext<IUserContextProps>({
-  users: Users,
+  users: [],
   setUsers: (users: IUser[]) => [],
 });
 
 UsersContext.displayName = "Users";
 
 const UsersProvider = ({ children }: UsersProviderProps) => {
-  const [users, setUsers] = useState<IUser[]>(Users);
+  const [users, setUsers] = useState<IUser[]>([]);
 
   const getUserByIndex = (index: number): IUser => {
     return users[index];
