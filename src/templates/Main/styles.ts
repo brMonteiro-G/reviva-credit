@@ -4,11 +4,10 @@ export const ContainerMain = styled.main`
   align-items: center;
   background-color: ${(props) => props.theme.colors.default_color};
   display: flex;
-  flex: 1;
   flex-direction: column;
-  justify-content: center;
-  min-height: 752px;
+  height: 812px;
+  justify-content: space-between;
   margin: auto;
-  margin-top: 50px;
+  padding: 0 2em;
   width: 375px;
 `;

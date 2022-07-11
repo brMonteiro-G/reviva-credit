@@ -27,7 +27,7 @@ const Card = ({ name, brand, number, cvv, dueDate, onClick }: CardProps) => {
   }
 
   return (
-    <WrapperCard color={color} onClick={onClick}>
+    <WrapperCard id="card" color={color} onClick={onClick}>
       <TitleCard>Reviva Credit</TitleCard>
       <NameClientCard>{name}</NameClientCard>
       <NumberCard>{number}</NumberCard>

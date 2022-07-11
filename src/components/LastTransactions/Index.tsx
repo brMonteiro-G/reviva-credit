@@ -1,21 +1,29 @@
 import {
-  Container,
+  ContainerLastTransactions,
   Content,
   DivShowAll,
   PaymentDescription,
   PaymentValue,
   Slash,
   Title,
-} from '@/components/LastTransactions/Styles';
-import { serviceTransactions } from '@/services/ServiceTransactions';
-import { ITransaction } from '@/types/ITransaction';
-import { useEffect, useState } from 'react';
+
+} from "@/components/LastTransactions/Styles";
+import { serviceTransactions } from "@/services/ServiceTransactions";
+import { ITransaction } from "@/types/ITransaction";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { listLastTransactions } from "./listLastTransactions";
 
 interface TransactionsProps {
-  page: 'first' | 'second'
-  transactionsDisplayed: number;
+  page: "first" | "second";
+  transactionsDisplayed?: number;
 }
-export default function LastTransactions({ transactionsDisplayed, page }: TransactionsProps) {
+
+export default function LastTransactions({
+  transactionsDisplayed,
+  page,
+}: TransactionsProps) {
+ 
 
 
   const [transactions, setTransactions] = useState<ITransaction[]>([]);
@@ -25,40 +33,39 @@ export default function LastTransactions({ transactionsDisplayed, page }: Transa
   },[])
   return (
 
-    <Container
-      itemProp={page}
-    >
-      {page === 'first' ? <Title>
-        <p>Últimas</p>
-        <p>movimentações</p>
-      </Title> : <></>}
-      {transactions.slice(0, transactionsDisplayed).map(transaction => {
-        return (
-          <Content
-            key={transaction.id}>
-            <>
-              <PaymentDescription
-              >
-                <p>{transaction.date}</p>
-                <p>{transaction.description}</p>
+    <>
+      <ContainerLastTransactions itemProp={page}>
+        <>
+          {page === "first" ? (
+            <Title>
+              <p>Últimas</p>
+              <p>movimentações</p>
+            </Title>
+          ) : (
+            <></>
+          )}
+          {listLastTransactions.slice(0, transactionsDisplayed).map((transactions) => (
+            <Content key={transactions.id}>
+              <PaymentDescription>
+                <p>{transactions.date}</p>
+                <p>{transactions.description}</p>
               </PaymentDescription>
               <Slash />
-
               <PaymentValue>
                 <p>Pagamento</p>
-                <p>-R${transaction.value.toFixed(2)}</p>
+                <p>- {transactions.value.toFixed(2).replace(".", ",")}</p>
               </PaymentValue>
-            </>
-
-          </Content>
-        )
-      })}
-      {page === 'first' ? <DivShowAll>
-        <a href='/'>
-          <u>Ver mais</u>
-        </a>
-      </DivShowAll> : <></>}
-    </Container>
-
+            </Content>
+          ))}
+          {page === "first" ? (
+            <DivShowAll>
+              <Link to="/details">VER MAIS</Link>
+            </DivShowAll>
+          ) : (
+            <></>
+          )}
+        </>
+      </ContainerLastTransactions>
+    </>
   );
 }

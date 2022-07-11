@@ -2,8 +2,9 @@ import { CardsProvider } from "@/contexts/CardsContext";
 import { TransactionsProvider } from "@/contexts/transactionsContext";
 import { UsersProvider } from "@/contexts/usersContext";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Footer from "./components/Footer";
-import PageDefault from "./templates";
+import Details from "./pages/details";
+import Home from "./pages/home";
+import Main from "./templates/Main";
 
 export default function AppRouter() {
   return (
@@ -23,6 +24,7 @@ export default function AppRouter() {
         </CardsProvider>
       </UsersProvider>
       <Footer />
+
     </Router>
   );
 }

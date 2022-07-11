@@ -1,15 +1,15 @@
 import styled from "styled-components";
 
 export const SectionCard = styled.section`
-  max-width: 325px;
+  background-color: ${(props) => props.theme.colors.default_color};
+  margin: auto 0;
   max-height: 200px;
-  background-color: #eeeeee;
-  padding: 2rem 0rem;
+  width: 100%;
 `;
 
 export const DivSeparator = styled.div`
+  align-items: flex-start;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
   margin: 10px 0 0px;
 `;

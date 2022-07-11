@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const WrapperCard = styled.section`
   background-color: ${(prop) => prop.color};
   border-radius: 1.8em;
-  box-shadow: 0px 4px 5px 0px #00000050;
+  box-shadow: 0px 3px 5px 0px #00000050;
   color: ${(prop) => prop.theme.colors.white_color};
   display: grid;
   grid-template-areas:
@@ -14,8 +14,8 @@ export const WrapperCard = styled.section`
   grid-template-columns: auto 1fr;
   grid-template-rows: 1fr 1fr 3em 1fr;
   height: 18em;
-  margin: 0 1.2em;
-  padding: 1.5em 1.5em;
+  margin: 0 1em;
+  padding: 1.5em 1.9em;
   scroll-snap-align: center;
   width: 300px;
 
