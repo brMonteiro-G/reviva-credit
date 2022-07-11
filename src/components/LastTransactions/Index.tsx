@@ -13,7 +13,7 @@ import { listLastTransactions } from "./listLastTransactions";
 
 interface TransactionsProps {
   page: "first" | "second";
-  transactionsDisplayed: number;
+  transactionsDisplayed?: number;
 }
 export default function LastTransactions({
   transactionsDisplayed,
@@ -34,7 +34,7 @@ export default function LastTransactions({
           ) : (
             <></>
           )}
-          {listLastTransactions.slice(0, 3).map((transactions) => (
+          {listLastTransactions.slice(0, transactionsDisplayed).map((transactions) => (
             <Content key={transactions.id}>
               <PaymentDescription>
                 <p>{transactions.date}</p>

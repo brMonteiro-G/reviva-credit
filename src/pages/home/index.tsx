@@ -1,4 +1,3 @@
-import Footer from "@/components/Footer";
 import Header from "@/components/Header/Index";
 import LastTransactions from "@/components/LastTransactions/Index";
 import LimitBar from "@/components/LimitBar";
@@ -16,7 +15,7 @@ const Home = () => {
       />
       <CarouselCard />
       <LimitBar />
-      <LastTransactions page={"first"} transactionsDisplayed={0} />
+      <LastTransactions page={"first"} transactionsDisplayed={3} />
       <Outlet />
     </>
   );
