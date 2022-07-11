@@ -2,6 +2,7 @@ import CardInfo from "@/components/CardInfo";
 import Extract from "@/components/Extract/Index";
 import Header from "@/components/Header/Index";
 import MonthBar from "@/components/MonthBar";
+import { Cards } from "@/contexts/mockData";
 
 const Details = () => {
   return (
@@ -12,7 +13,7 @@ const Details = () => {
         regards={"Olá, "}
         user={"Renato!"}
       />
-      <CardInfo />
+      <CardInfo card={Cards[0]} />
       <MonthBar status={"aberta"} />
       <Extract />
     </>
