@@ -19,9 +19,10 @@ const CarouselCard = ({ onClick }: ListCardProps) => {
     <>
       <ContainerListCard>
         <ListCard
+          id="list-card"
           onClick={onClick}
           onScroll={() => {
-            updateFocusState("section", setFocusedCard, 1);
+            updateFocusState("card", setFocusedCard);
           }}
         >
           {listCard.map((card, index) => (
@@ -32,7 +33,7 @@ const CarouselCard = ({ onClick }: ListCardProps) => {
               cvv={card.cvv}
               dueDate={card.dueDate}
               number={card.number}
-              onClick={() => moveScrollOnClick(focusedCard, index)}
+              onClick={() => moveScrollOnClick(focusedCard, index, "list-card", "card")}
             />
           ))}
         </ListCard>

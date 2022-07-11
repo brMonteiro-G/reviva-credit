@@ -1,19 +1,20 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Footer from "./components/Footer";
-import PageDefault from "./templates";
+import Details from "./pages/details";
+import Home from "./pages/home";
+import Main from "./templates/Main";
 
 export default function AppRouter() {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<PageDefault />}>
-          <Route path="/wallet" element={""} />
-          <Route path="/details" element={""} />
-          <Route path="/settings" element={""} />
-        </Route>
-        <Route path="*" element={""} />
-      </Routes>
-      <Footer />
+      <Main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/wallet" element={"Wallet"} />
+          <Route path="/settings" element={"Settings"} />
+          <Route path="/details" element={<Details />} />
+          <Route path="*" element={"404"} />
+        </Routes>
+      </Main>
     </Router>
   );
 }

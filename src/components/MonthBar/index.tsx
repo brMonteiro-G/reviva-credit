@@ -1,3 +1,4 @@
+import { theme } from "@/styles/ThemeProvider";
 import { Dispatch, SetStateAction } from "react";
 import { useEffect, useState } from "react";
 import { monthList } from "./monthList";
@@ -8,56 +9,87 @@ import {
   WrapperMonthItem,
 } from "./style";
 
+interface MonthBarProps {
+  status: "pago" | "aberta" | "fechada";
+}
+
 export const updateFocusState = (
-  tagChild: string,
-  setState: Dispatch<SetStateAction<number>>,
-  decrement: number
+  tagId: string,
+  setState: Dispatch<SetStateAction<number>>
 ) => {
-  document.querySelectorAll(tagChild).forEach((card, index) => {
+  document.querySelectorAll(`#${tagId}`).forEach((card, index) => {
     if (card.getBoundingClientRect().left < window.innerWidth / 2) {
-      setState(index - (decrement || 0));
+      setState(index);
     }
   });
 };
 
-export const moveScrollOnClick = (focusedCard: number, index: number) => {
-  const currentItems = document.querySelector("section");
+export const moveScrollOnClick = (
+  focusedCard: number,
+  index: number,
+  idTagFather: string,
+  typeOfUse: "card" | "month"
+) => {
+  const distanceFromScroll = typeOfUse === "card" ? 300 : 80;
+  const currentItems = document.querySelector(`#${idTagFather}`);
   const difference = index - focusedCard;
-
   if (index - difference === focusedCard) {
     currentItems?.scrollBy({
-      left: +(difference * 90),
+      left: +(difference * distanceFromScroll),
       behavior: "smooth",
     });
   }
 };
 
-const MonthBar = () => {
-  const [focusedCard, setFocusedCard] = useState(0);
-  
+const MonthBar = ({ status }: MonthBarProps) => {
+  let currentColorStatus: string;
+  switch (status) {
+    case "pago":
+      currentColorStatus = theme.colors.gray_color;
+      break;
+    case "aberta":
+      currentColorStatus = theme.colors.tertiary_color;
+      break;
+    case "fechada":
+      currentColorStatus = theme.colors.quintenary_color;
+      break;
+  }
+
+  const [focusedMonth, setFocusedMonth] = useState(0);
+
   useEffect(() => {
-    console.log(focusedCard + 1);
-  }, [focusedCard]);
+    console.log(focusedMonth + 1);
+  }, [focusedMonth]);
 
   return (
     <WrapperMonthBar>
       <WrapperMonthItem
+        backgroundColor={currentColorStatus}
+        id="wrapper-month-item"
         onScroll={() => {
-          updateFocusState("p", setFocusedCard, 0);
+          updateFocusState("month", setFocusedMonth);
         }}
       >
         {monthList.map((month, index) => (
           <MonthItem
-            onClick={() => moveScrollOnClick(focusedCard, index)}
+            onClick={() => {
+              moveScrollOnClick(
+                focusedMonth,
+                index,
+                "wrapper-month-item",
+                "month"
+              );
+            }}
+            id={"month"}
             title={month}
             key={index}
-            focused={index === focusedCard}
+            focused={index === focusedMonth}
           >
             {month}
           </MonthItem>
         ))}
       </WrapperMonthItem>
-      <PointerTriangle />
+      <PointerTriangle backgroundColor={currentColorStatus} />
     </WrapperMonthBar>
   );
 };
