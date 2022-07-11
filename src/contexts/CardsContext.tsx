@@ -1,7 +1,14 @@
 import { ICard } from "@/types/ICard";
 import { IUser } from "@/types/IUser";
-import { createContext, ReactNode, useContext, useState } from "react";
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { Cards } from "./mockData";
+import { useUsers } from "./usersContext";
 
 type CardsContextProps = {
   children: ReactNode;
@@ -9,29 +16,31 @@ type CardsContextProps = {
 
 type CardContextType = {
   cards: ICard[];
-  setCards: (cards: ICard[]) => void;
-  cardsByUser: ({ id }: IUser) => void;
+  userCard: IUser;
 };
 
 const initialValue = {
   cards: Cards,
-  setCards: () => {},
-  cardsByUser: () => {},
+  userCard: { id: "", name: "" },
 };
 
 export const CardsContext = createContext<CardContextType>(initialValue);
 CardsContext.displayName = "Cards";
 
 const CardsProvider = ({ children }: CardsContextProps) => {
-  const [cards, setCards] = useState<ICard[]>(Cards);
+  const [cards, setCards] = useState<ICard[]>(initialValue.cards);
 
-  const cardsByUser = ({ id }: IUser) => {
-    const cardsFiltered = cards.filter((card) => card.userId === id);
-    return cardsFiltered;
-  };
+  const { users } = useUsers();
+
+  const userCard = users[0];
+  const cardsFiltered = cards.filter((card) => card.userId === userCard.id);
+
+  useEffect(() => {
+    setCards(cardsFiltered);
+  }, [userCard]);
 
   return (
-    <CardsContext.Provider value={{ cards, setCards, cardsByUser }}>
+    <CardsContext.Provider value={{ cards, userCard }}>
       {children}
     </CardsContext.Provider>
   );

@@ -1,5 +1,12 @@
 import { IUser } from "@/types/IUser";
-import { createContext, ReactNode, useState } from "react";
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
+import { Users } from "./mockData";
 
 export interface UsersProviderProps {
   children: ReactNode;
@@ -11,16 +18,33 @@ interface IUserContextProps {
 }
 
 export const UsersContext = createContext<IUserContextProps>({
-  users: [],
+  users: Users,
   setUsers: (users: IUser[]) => [],
 });
+
 UsersContext.displayName = "Users";
 
-export const UsersProvider = ({ children }: UsersProviderProps) => {
-  const [users, setUsers] = useState<IUser[]>([]);
+const UsersProvider = ({ children }: UsersProviderProps) => {
+  const [users, setUsers] = useState<IUser[]>(Users);
+
+  const getUserByIndex = (index: number): IUser => {
+    return users[index];
+  };
+
+  useEffect(() => {
+    console.log("entrou useeffect context user", users);
+  }, []);
+
   return (
     <UsersContext.Provider value={{ users, setUsers }}>
       {children}
     </UsersContext.Provider>
   );
 };
+
+const useUsers = () => {
+  const context = useContext(UsersContext);
+  return context;
+};
+
+export { useUsers, UsersProvider };
