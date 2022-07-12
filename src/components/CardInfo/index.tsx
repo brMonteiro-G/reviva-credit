@@ -1,4 +1,4 @@
-import { useCard } from "@/contexts/cardsContext";
+import { useCard } from "@/contexts/CardsContext";
 import { ICard } from "@/types/ICard";
 import CardImageDetail from "./CardImageDetail";
 import CardInfoDetail from "./CardInfoDetail";
@@ -9,7 +9,8 @@ interface CardInfoProps {
 }
 
 const CardInfo = ({ card }: CardInfoProps) => {
-  const { userCard } = useCard();
+
+  const { userCard } = useCard()
 
   return (
     <SC.SectionCard>

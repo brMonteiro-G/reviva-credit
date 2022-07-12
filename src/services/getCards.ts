@@ -1,9 +1,9 @@
-import { ITransactions } from "@/types/ITransactions";
+import { ICard } from "@/types/ICard";
 
-export async function getTransactions(): Promise<ITransactions[]> {
+export async function getCards(): Promise<ICard[]> {
   try {
     const data = await fetch(
-      "https://reviva-credit-api.herokuapp.com/transactions"
+      "https://reviva-credit-api.herokuapp.com/cards"
     );
     return await data.json();
   } catch (error) {
@@ -11,5 +11,5 @@ export async function getTransactions(): Promise<ITransactions[]> {
       "Não foi possível se comunicar com a base de dados, por favor verifique o erro" +
         error
     );
-  }
+  } 
 }

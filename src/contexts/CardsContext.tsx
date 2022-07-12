@@ -1,3 +1,4 @@
+import { getCards } from "@/services/getCards";
 import { ICard } from "@/types/ICard";
 import { IUser } from "@/types/IUser";
 import {
@@ -7,7 +8,6 @@ import {
   useEffect,
   useState,
 } from "react";
-import { Cards } from "./mockData";
 import { useUsers } from "./usersContext";
 
 type CardsContextProps = {
@@ -20,7 +20,7 @@ type CardContextType = {
 };
 
 const initialValue = {
-  cards: Cards,
+  cards: [],
   userCard: { id: "", name: "" },
 };
 
@@ -31,13 +31,21 @@ const CardsProvider = ({ children }: CardsContextProps) => {
   const [cards, setCards] = useState<ICard[]>(initialValue.cards);
 
   const { users } = useUsers();
-
   const userCard = users[0];
-  const cardsFiltered = cards.filter((card) => card.userId === userCard.id);
+
+  const getCardsByUser = async () => {
+    const getAllCards = await getCards();
+    const cardsFiltered = getAllCards.filter(
+      (card) => card.userId === userCard.id
+    );
+
+    setCards(cardsFiltered);
+    return cardsFiltered;
+  };
 
   useEffect(() => {
-    setCards(cardsFiltered);
-  }, [userCard]);
+    getCardsByUser();
+  }, []);
 
   return (
     <CardsContext.Provider value={{ cards, userCard }}>

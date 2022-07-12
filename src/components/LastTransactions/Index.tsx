@@ -7,9 +7,8 @@ import {
   Slash,
   Title,
 } from "@/components/LastTransactions/Styles";
-import { getTransactions } from "@/services/getTransactions";
+import { useTransactions } from "@/contexts/transactionsContext";
 import { Link } from "react-router-dom";
-import { listLastTransactions } from "./listLastTransactions";
 
 interface TransactionsProps {
   page: "first" | "second";
@@ -19,9 +18,9 @@ export default function LastTransactions({
   transactionsDisplayed,
   page,
 }: TransactionsProps) {
-  const alguma = getTransactions();
-  console.log(alguma);
 
+  const { transactions } = useTransactions();
+  
   return (
     <>
       <ContainerLastTransactions itemProp={page}>
@@ -34,19 +33,21 @@ export default function LastTransactions({
           ) : (
             <></>
           )}
-          {listLastTransactions.slice(0, transactionsDisplayed).map((transactions) => (
-            <Content key={transactions.id}>
-              <PaymentDescription>
-                <p>{transactions.date}</p>
-                <p>{transactions.description}</p>
-              </PaymentDescription>
-              <Slash />
-              <PaymentValue>
-                <p>Pagamento</p>
-                <p>- {transactions.value.toFixed(2).replace(".", ",")}</p>
-              </PaymentValue>
-            </Content>
-          ))}
+          {transactions
+            .slice(0, transactionsDisplayed)
+            .map((transactions) => (
+              <Content key={transactions.id}>
+                <PaymentDescription>
+                  <p>{transactions.date}</p>
+                  <p>{transactions.description}</p>
+                </PaymentDescription>
+                <Slash />
+                <PaymentValue>
+                  <p>Pagamento</p>
+                  <p>- {transactions.value.toFixed(2).replace(".", ",")}</p>
+                </PaymentValue>
+              </Content>
+            ))}
           {page === "first" ? (
             <DivShowAll>
               <Link to="/details">VER MAIS</Link>

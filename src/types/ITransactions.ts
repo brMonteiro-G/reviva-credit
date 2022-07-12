@@ -3,5 +3,5 @@ export interface ITransactions {
   cardId: string;
   value: number;
   description: string;
-  date: string | Date;
+  date: string;
 }
