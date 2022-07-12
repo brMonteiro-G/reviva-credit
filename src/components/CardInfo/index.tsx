@@ -1,8 +1,13 @@
+import { ICard } from "@/types/ICard";
 import CardImageDetail from "./CardImageDetail";
 import CardInfoDetail from "./CardInfoDetail";
 import * as SC from "./styles";
 
-const CardInfo = () => {
+interface CardInfoProps {
+  card: ICard;
+}
+
+const CardInfo = ({ card }: CardInfoProps) => {
   return (
     <SC.SectionCard>
       <CardImageDetail
