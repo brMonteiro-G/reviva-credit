@@ -1,12 +1,25 @@
+import { useCard } from "@/contexts/CardsContext";
 import { formactPrice } from "@/functions";
 import { useEffect } from "react";
+import Loading from "../Loading";
 import Bar from "./Bar";
 import InfoCredit from "./InfoCredit";
 import * as SC from "./styles";
 
 const LimitBar = () => {
-  const limite = 3000;
-  const utilizado = 1599.9;
+
+  // const { cards } = useCard();
+
+  // const 
+
+  // const card = cards[0];
+
+  // if(!cards) {
+  //   return <Loading />
+  // }
+
+  const limite =  2000;
+  const utilizado = 100;
 
   const calculatePercent = (): string => {
     const result = (utilizado * 100) / limite;

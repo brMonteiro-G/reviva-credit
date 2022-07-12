@@ -14,10 +14,12 @@ interface TransactionsProviderProps {
 
 interface TransactionsContextProps {
   transactions: ITransaction[];
+  // setTransactions: React.Dispatch<React.SetStateAction<ITransaction[]>>;
 }
 
 export const TransactionsContext = createContext<TransactionsContextProps>({
   transactions: [],
+  // setTransactions: {}
 });
 TransactionsContext.displayName = "transactions";
 
@@ -30,7 +32,6 @@ const TransactionsProvider = ({ children }: TransactionsProviderProps) => {
 
   useEffect(() => {
     getAllTransactions();
-    console.log(transactions);
   }, []);
 
   return (

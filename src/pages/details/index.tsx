@@ -2,6 +2,7 @@ import CardInfo from "@/components/CardInfo";
 import Extract from "@/components/Extract/Index";
 import Header from "@/components/Header/Index";
 import MonthBar from "@/components/MonthBar";
+import { ICard } from "@/types/ICard";
 
 const Details = () => {
   return (
@@ -12,7 +13,7 @@ const Details = () => {
         regards={"Olá, "}
         user={"Renato!"}
       />
-      <CardInfo />
+      <CardInfo card={{} as ICard} />
       <MonthBar status={"aberta"} />
       <Extract />
     </>

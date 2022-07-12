@@ -4,7 +4,7 @@ import CardInfo from "./components/CardInfo";
 function App() {
   return (
     <div>
-      <CardInfo />
+      {/* <CardInfo /> */}
     </div>
   );
 }
