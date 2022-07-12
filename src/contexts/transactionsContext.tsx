@@ -1,6 +1,12 @@
-
+import { serviceTransactions } from "@/services/ServiceTransactions";
 import { ITransaction } from "@/types/ITransaction";
-import { createContext, ReactNode, useState } from "react";
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 
 interface TransactionsProviderProps {
   children: ReactNode;
@@ -8,22 +14,35 @@ interface TransactionsProviderProps {
 
 interface TransactionsContextProps {
   transactions: ITransaction[];
-  setTransactions: (transactions: ITransaction[]) => void;
 }
 
 export const TransactionsContext = createContext<TransactionsContextProps>({
   transactions: [],
-  setTransactions: (transactions: ITransaction[]) => [],
 });
 TransactionsContext.displayName = "transactions";
 
-export const TransactionsProvider = ({
-  children,
-}: TransactionsProviderProps) => {
+const TransactionsProvider = ({ children }: TransactionsProviderProps) => {
   const [transactions, setTransactions] = useState<ITransaction[]>([]);
+
+  const getAllTransactions = async () => {
+    setTransactions(await serviceTransactions());
+  };
+
+  useEffect(() => {
+    getAllTransactions();
+    console.log(transactions);
+  }, []);
+
   return (
-    <TransactionsContext.Provider value={{ transactions, setTransactions }}>
+    <TransactionsContext.Provider value={{ transactions }}>
       {children}
     </TransactionsContext.Provider>
   );
 };
+
+const useTransactions = () => {
+  const context = useContext(TransactionsContext);
+  return context;
+};
+
+export { useTransactions, TransactionsProvider };
