@@ -1,4 +1,5 @@
-import { IUTransactions } from "@/types/IUTransactions";
+
+import { ITransaction } from "@/types/ITransaction";
 import { createContext, ReactNode, useState } from "react";
 
 interface TransactionsProviderProps {
@@ -6,20 +7,20 @@ interface TransactionsProviderProps {
 }
 
 interface TransactionsContextProps {
-  transactions: IUTransactions[];
-  setTransactions: (transactions: IUTransactions[]) => void;
+  transactions: ITransaction[];
+  setTransactions: (transactions: ITransaction[]) => void;
 }
 
 export const TransactionsContext = createContext<TransactionsContextProps>({
   transactions: [],
-  setTransactions: (transactions: IUTransactions[]) => [],
+  setTransactions: (transactions: ITransaction[]) => [],
 });
 TransactionsContext.displayName = "transactions";
 
 export const TransactionsProvider = ({
   children,
 }: TransactionsProviderProps) => {
-  const [transactions, setTransactions] = useState<IUTransactions[]>([]);
+  const [transactions, setTransactions] = useState<ITransaction[]>([]);
   return (
     <TransactionsContext.Provider value={{ transactions, setTransactions }}>
       {children}
