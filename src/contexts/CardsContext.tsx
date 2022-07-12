@@ -1,7 +1,14 @@
+import { serviceCards } from "@/services/ServiceCards";
 import { ICard } from "@/types/ICard";
 import { IUser } from "@/types/IUser";
-import { createContext, ReactNode, useContext, useState } from "react";
-import { Cards } from "./mockData";
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
+import { useUsers } from "./UsersContext";
 
 type CardsContextProps = {
   children: ReactNode;
@@ -9,29 +16,40 @@ type CardsContextProps = {
 
 type CardContextType = {
   cards: ICard[];
-  setCards: (cards: ICard[]) => void;
-  cardsByUser: ({ id }: IUser) => void;
+  userCard: IUser;
 };
 
 const initialValue = {
-  cards: Cards,
-  setCards: () => {},
-  cardsByUser: () => {},
+  cards: [],
+  userCard: { id: "", name: "" },
 };
 
 export const CardsContext = createContext<CardContextType>(initialValue);
 CardsContext.displayName = "Cards";
 
 const CardsProvider = ({ children }: CardsContextProps) => {
-  const [cards, setCards] = useState<ICard[]>(Cards);
+  const [cards, setCards] = useState<ICard[]>(initialValue.cards);
 
-  const cardsByUser = ({ id }: IUser) => {
-    const cardsFiltered = cards.filter((card) => card.userId === id);
+  const { users } = useUsers();
+  const userCard = users[0];
+
+  const getCardsByUser = async () => {
+    const getAllCards = await serviceCards();
+    const cardsFiltered = getAllCards.filter(
+      (card) => card.userId === userCard.id
+    );
+
+    setCards(cardsFiltered);
     return cardsFiltered;
   };
 
+  useEffect(() => {
+    getCardsByUser();
+    console.log(userCard)
+  }, []);
+
   return (
-    <CardsContext.Provider value={{ cards, setCards, cardsByUser }}>
+    <CardsContext.Provider value={{ cards, userCard }}>
       {children}
     </CardsContext.Provider>
   );
