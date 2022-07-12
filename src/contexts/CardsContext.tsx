@@ -45,7 +45,7 @@ const CardsProvider = ({ children }: CardsContextProps) => {
 
   useEffect(() => {
     getCardsByUser();
-    console.log(userCard)
+    console.log(userCard);
   }, []);
 
   return (
