@@ -2,6 +2,7 @@ import {
   ContainerLastTransactions,
   Content,
   DivShowAll,
+  NoTransactions,
   PaymentDescription,
   PaymentValue,
   Slash,
@@ -21,10 +22,8 @@ interface TransactionsProps {
 export default function LastTransactions({
   transactionsDisplayed,
   page,
-  transactions
+  transactions,
 }: TransactionsProps) {
-
-  
   return (
     <>
       <ContainerLastTransactions itemProp={page}>
@@ -35,9 +34,11 @@ export default function LastTransactions({
               <p>movimentações</p>
             </Title>
           )}
-          {transactions
-            .slice(0, transactionsDisplayed)
-            .map((transactions) => (
+
+          {transactions.length <= 0 ? (
+            <NoTransactions>VOCÊ NÃO GASTOU ESSE MÊS &#128515;</NoTransactions>
+          ) : (
+            transactions.slice(0, transactionsDisplayed).map((transactions) => (
               <Content itemProp={page} key={transactions.id}>
                 <PaymentDescription>
                   <p>{formatDate(transactions.date)}</p>
@@ -49,7 +50,9 @@ export default function LastTransactions({
                   <p>- {transactions.value.toFixed(2).replace(".", ",")}</p>
                 </PaymentValue>
               </Content>
-            ))}
+            ))
+          )}
+          {/* {} */}
           {page === "first" ? (
             <DivShowAll>
               <Link to="/details">VER MAIS</Link>
