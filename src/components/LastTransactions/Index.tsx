@@ -7,8 +7,9 @@ import {
   Slash,
   Title,
 } from "@/components/LastTransactions/Styles";
+import { useTransactions } from "@/contexts/TransactionsContext";
+import { formatDate } from "@/functions";
 import { Link } from "react-router-dom";
-import { listLastTransactions } from "./listLastTransactions";
 
 interface TransactionsProps {
   page: "first" | "second";
@@ -18,6 +19,8 @@ export default function LastTransactions({
   transactionsDisplayed,
   page,
 }: TransactionsProps) {
+  const { transactionsByCard } = useTransactions();
+
   return (
     <>
       <ContainerLastTransactions itemProp={page}>
@@ -30,12 +33,12 @@ export default function LastTransactions({
           ) : (
             <></>
           )}
-          {listLastTransactions
+          {transactionsByCard
             .slice(0, transactionsDisplayed)
             .map((transactions) => (
               <Content key={transactions.id}>
                 <PaymentDescription>
-                  <p>{transactions.date}</p>
+                  <p>{formatDate(transactions.date)}</p>
                   <p>{transactions.description}</p>
                 </PaymentDescription>
                 <Slash />

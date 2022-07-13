@@ -1,4 +1,5 @@
 import { serviceTransactions } from "@/services/ServiceTransactions";
+import { ICard } from "@/types/ICard";
 import { ITransaction } from "@/types/ITransaction";
 import {
   createContext,
@@ -13,29 +14,52 @@ interface TransactionsProviderProps {
 }
 
 interface TransactionsContextProps {
-  transactions: ITransaction[];
-  // setTransactions: React.Dispatch<React.SetStateAction<ITransaction[]>>;
+  calculateTotal: () => number;
+  transactionsByCard: ITransaction[];
+  getTransactionsByCard: (card: ICard) => void;
 }
 
 export const TransactionsContext = createContext<TransactionsContextProps>({
-  transactions: [],
-  // setTransactions: {}
+  calculateTotal: () => 0,
+  transactionsByCard: [],
+  getTransactionsByCard: () => {},
 });
 TransactionsContext.displayName = "transactions";
 
 const TransactionsProvider = ({ children }: TransactionsProviderProps) => {
-  const [transactions, setTransactions] = useState<ITransaction[]>([]);
+  const [transactionsByCard, setTransactionsByCard] = useState<ITransaction[]>(
+    []
+  );
 
-  const getAllTransactions = async () => {
-    setTransactions(await serviceTransactions());
+  const getTransactionsByCard = async (card: ICard) => {
+    const transactions = await serviceTransactions();
+    if (transactions) {
+      const transactionsFiltered = transactions.filter(
+        (transaction) => transaction.cardId === card?.id
+      );
+      return setTransactionsByCard(transactionsFiltered);
+    }
+  };
+
+  const calculateTotal = () => {
+    const mesAtual = new Date().getMonth() - 1;
+    const total = transactionsByCard
+      .filter((transaction) => {
+        const dateLimit = new Date(transaction.date);
+        return dateLimit.getMonth() === mesAtual;
+      })
+      .reduce((prev, acm) => (prev += acm.value), 0);
+    return total;
   };
 
   useEffect(() => {
-    getAllTransactions();
+    calculateTotal();
   }, []);
 
   return (
-    <TransactionsContext.Provider value={{ transactions }}>
+    <TransactionsContext.Provider
+      value={{ getTransactionsByCard, transactionsByCard, calculateTotal }}
+    >
       {children}
     </TransactionsContext.Provider>
   );

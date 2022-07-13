@@ -4,11 +4,12 @@ interface InfoProps {
   title: string;
   value: string;
   position: string;
+  warning: boolean
 }
 
-const InfoCredit = ({ title, value, position }: InfoProps) => {
+const InfoCredit = ({ title, value, position, warning = false }: InfoProps) => {
   return (
-    <Container position={position}>
+    <Container warning={warning} position={position}>
       <h3>{title}</h3>
       <p>{value}</p>
     </Container>
