@@ -1,4 +1,5 @@
 import { ICard } from "./types/ICard";
+import { ITransaction } from "./types/ITransaction";
 
 export const formactPrice = (preco: number): string =>
 new Intl.NumberFormat("pt-BR", {
@@ -24,3 +25,14 @@ export const addCardNumberMask = (listCard: ICard[]) => {
   );
   return listCard;
 }
+
+export const getCurrentMonth = (): number => {
+  const currentDate = new Date();
+  return currentDate.getMonth();
+}
+
+export const getFullAmountMonthly = (currentMonth: ITransaction[]) => {
+  return currentMonth.reduce((acc, transaction) => {
+    return acc + transaction.value;
+  }, 0);
+};

@@ -1,7 +1,8 @@
 import { theme } from "@/styles/ThemeProvider";
 import { Dispatch, SetStateAction } from "react";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { monthList } from "./monthList";
+import { getCurrentMonth } from "../../functions";
 import {
   MonthItem,
   PointerTriangle,
@@ -56,6 +57,15 @@ const MonthBar = ({ status, focusedMonth, setFocusedMonth }: MonthBarProps) => {
       currentColorStatus = theme.colors.quintenary_color;
       break;
   }
+
+  useEffect(() => {
+    moveScrollOnClick(
+      focusedMonth,
+      getCurrentMonth() + 1,
+      "wrapper-month-item",
+      "month"
+    );
+  }, []);
 
   return (
     <WrapperMonthBar>
