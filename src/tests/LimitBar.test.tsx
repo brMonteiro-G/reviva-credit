@@ -3,8 +3,8 @@ import { ThemeProvider } from "styled-components";
 import { theme } from "@/styles/ThemeProvider";
 import Bar from "@/components/LimitBar/Bar";
 
-describe("Limit Bar,  is changing accordingly", () => {
-  it("with the values", () => {
+describe("component <Limit Bar/>", () => {
+  it("should display the values", () => {
     const limite = 3000;
     const utilizado = 1599.9;
 

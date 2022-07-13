@@ -3,8 +3,8 @@ import { render, screen } from "@testing-library/react";
 import { ThemeProvider } from "styled-components";
 import { theme } from "@/styles/ThemeProvider";
 
-describe("CardInfo,  invoice screen display", () => {
-  it("due date", () => {
+describe("component <CardInfoDetail/>", () => {
+  it("should display due date", () => {
     render(
       <ThemeProvider theme={theme}>
         <CardInfoDetail label={"Vencimento"} value={"08/01"} />

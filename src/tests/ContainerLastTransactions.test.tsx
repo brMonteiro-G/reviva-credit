@@ -3,8 +3,8 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import { ThemeProvider } from "styled-components";
 import { theme } from "@/styles/ThemeProvider";
 
-describe("ContainerLastTransactions,  there should be", () => {
-  it("Link see more,is rederizing more elements in the list", () => {
+describe("component <ContainerLastTransactions/>", () => {
+  it("should display Link see more,is rederizing more elements in the list", () => {
     const { debug } = render(
       <ThemeProvider theme={theme}>
         <ContainerLastTransactions data-testid="dataTestId" />
