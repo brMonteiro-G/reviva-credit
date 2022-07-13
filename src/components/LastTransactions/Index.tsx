@@ -9,34 +9,36 @@ import {
 } from "@/components/LastTransactions/Styles";
 import { useTransactions } from "@/contexts/TransactionsContext";
 import { formatDate } from "@/functions";
+import { ITransaction } from "@/types/ITransaction";
 import { Link } from "react-router-dom";
+import { listLastTransactions } from "./listLastTransactions";
 
 interface TransactionsProps {
   page: "first" | "second";
   transactionsDisplayed?: number;
+  transactions: ITransaction[];
 }
 export default function LastTransactions({
   transactionsDisplayed,
   page,
+  transactions
 }: TransactionsProps) {
-  const { transactionsByCard } = useTransactions();
 
+  
   return (
     <>
       <ContainerLastTransactions itemProp={page}>
         <>
-          {page === "first" ? (
+          {page === "first" && (
             <Title>
               <p>Últimas</p>
               <p>movimentações</p>
             </Title>
-          ) : (
-            <></>
           )}
-          {transactionsByCard
+          {transactions
             .slice(0, transactionsDisplayed)
             .map((transactions) => (
-              <Content key={transactions.id}>
+              <Content itemProp={page} key={transactions.id}>
                 <PaymentDescription>
                   <p>{formatDate(transactions.date)}</p>
                   <p>{transactions.description}</p>

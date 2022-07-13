@@ -12,6 +12,7 @@ export const ListCard = styled.section`
   overflow: auto;
   position: relative;
   scroll-snap-type: x mandatory;
+  scrollbar-width: none;
   width: 375px;
   &::-webkit-scrollbar {
     display: none;

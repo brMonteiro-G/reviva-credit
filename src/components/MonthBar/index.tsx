@@ -10,7 +10,9 @@ import {
 } from "./style";
 
 interface MonthBarProps {
-  status: "pago" | "aberta" | "fechada";
+  status: "Pago" | "Aberta" | "Fechada";
+  focusedMonth: number;
+  setFocusedMonth: Dispatch<SetStateAction<number>>;
 }
 
 export const updateFocusState = (
@@ -41,25 +43,19 @@ export const moveScrollOnClick = (
   }
 };
 
-const MonthBar = ({ status }: MonthBarProps) => {
+const MonthBar = ({ status, focusedMonth, setFocusedMonth }: MonthBarProps) => {
   let currentColorStatus: string;
   switch (status) {
-    case "pago":
+    case "Pago":
       currentColorStatus = theme.colors.gray_color;
       break;
-    case "aberta":
+    case "Aberta":
       currentColorStatus = theme.colors.tertiary_color;
       break;
-    case "fechada":
+    case "Fechada":
       currentColorStatus = theme.colors.quintenary_color;
       break;
   }
-
-  const [focusedMonth, setFocusedMonth] = useState(0);
-
-  useEffect(() => {
-    console.log(focusedMonth + 1);
-  }, [focusedMonth]);
 
   return (
     <WrapperMonthBar>

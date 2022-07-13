@@ -12,12 +12,14 @@ export const ContainerLastTransactions = styled.div`
   display: flex;
   flex-direction: column;
   height: ${(props) => props.itemProp == 'first' ? '310px' : '502px' };
-  overflow: auto;
+  overflow: ${(props) => props.itemProp == 'first' ? 'none' : 'auto' };
   padding: 3em 2em 2em 2em;
   padding-right: ${(props) => props.itemProp == 'first' ? '2em' : '1em' };
+  scrollbar-width: ${(props) => props.itemProp == 'first' ? 'none' : 'block' };
   width: 375px;
   &::-webkit-scrollbar {
     width: 10px;
+    display: ${(props) => props.itemProp == 'first' ? 'none' : 'block' };
   }
   &::-webkit-scrollbar-thumb {
     background-color: #1b60b4;
@@ -40,7 +42,9 @@ export const Title = styled.strong`
 export const Content = styled.div`
   align-items: center;
   display: grid;
+  overflow: hidden;
   grid-template-columns: repeat(3, 2fr);
+  height: ${(props) => props.itemProp == 'first' ? ' 7em' : 'auto' };
 `;
 
 export const PaymentDescription = styled(Title)`

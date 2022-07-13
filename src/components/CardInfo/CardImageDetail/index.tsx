@@ -1,15 +1,26 @@
+import { theme } from "@/styles/ThemeProvider";
 import * as SC from "./styles";
 
 interface CardImageDetailProps {
-  urlImage: string;
   nameCardUser: string;
   numberCard: string;
+  brand: string;
 }
 
-const CardImageDetail = ( { urlImage, nameCardUser, numberCard }: CardImageDetailProps) => {
+const CardImageDetail = ({
+  brand,
+  nameCardUser,
+  numberCard,
+}: CardImageDetailProps) => {
+  let color = theme.colors.primary_color;
+
+  if (brand === "visa") {
+    color = theme.colors.tertiary_color;
+  }
+
   return (
     <SC.ContainerInfoMain>
-      <SC.Card urlImage={urlImage} />
+      <SC.Card color={color} urlImage={`/images/${brand}.svg`} />
       <SC.ContainerNameAndNumber>
         <h2>{nameCardUser}</h2>
         <p>{numberCard}</p>

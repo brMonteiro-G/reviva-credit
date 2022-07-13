@@ -17,6 +17,7 @@ export const WrapperMonthBar = styled.div`
 
 export const PointerTriangle = styled.div<IColorMonthItem>`
   background-color: ${(props) => props.backgroundColor};
+  border-radius: 5px 0;
   height: 1.7em;
   left: calc(50% - 1em);
   position: absolute;
@@ -32,6 +33,7 @@ export const WrapperMonthItem = styled.section<IColorMonthItem>`
   height: 40px;
   overflow: auto;
   scroll-snap-type: x mandatory;
+  scrollbar-width: none;
   width: 375px;
   &::-webkit-scrollbar {
     display: none;

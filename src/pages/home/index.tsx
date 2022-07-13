@@ -4,10 +4,12 @@ import LimitBar from "@/components/LimitBar";
 import CarouselCard from "@/components/ListCard";
 import Loading from "@/components/Loading";
 import { useCard } from "@/contexts/CardsContext";
+import { useTransactions } from "@/contexts/TransactionsContext";
 import { Outlet } from "react-router-dom";
 
 const Home = () => {
   const { userCard } = useCard();
+  const { transactionsByCard } = useTransactions();
 
   if (!userCard) {
     return <Loading />;
@@ -23,7 +25,11 @@ const Home = () => {
       />
       <CarouselCard />
       <LimitBar />
-      <LastTransactions page={"first"} transactionsDisplayed={3} />
+      <LastTransactions
+        page={"first"}
+        transactionsDisplayed={3}
+        transactions={transactionsByCard}
+      />
       <Outlet />
     </>
   );
