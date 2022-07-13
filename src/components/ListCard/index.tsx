@@ -10,24 +10,26 @@ interface ListCardProps {
   onClick?: () => void;
 }
 
-const updateScrollOnLoad = (focusedCard: number) => {
-  const currentItems = document.querySelector("#list-card");
+export const updateScrollOnLoad = (focusedCard: number, idTag: string) => {
+  const currentItems = document.querySelector(`#${idTag}`);
   currentItems?.scrollBy({
     left: +(focusedCard * 100),
   });
 };
-const CarouselCard = ({ onClick }: ListCardProps) => {
-  // const [focusedCard, setFocusedCard] = useState(0);
 
+const CarouselCard = ({ onClick }: ListCardProps) => {
   const { cardFocus, setIndexCurrentCard, indexCurrentCard, setCardFocus } =
     useCardInFocus();
 
   const { cards, userCard } = useCard();
-
   const { getTransactionsByCard } = useTransactions();
 
   useEffect(() => {
-    updateScrollOnLoad(indexCurrentCard);
+    updateScrollOnLoad(indexCurrentCard, "list-card");
+  }
+  , []);
+
+  useEffect(() => {
     setCardFocus(cards[indexCurrentCard]);
     getTransactionsByCard(cards[indexCurrentCard]);
   }, [indexCurrentCard, cards]);
@@ -47,7 +49,7 @@ const CarouselCard = ({ onClick }: ListCardProps) => {
             name={userCard.name}
             brand={card.brand}
             cvv={card.cvv}
-            dueDate={card.dueDate}
+            expiresIn={card.expiresIn}
             number={card.number}
             onClick={() =>
               moveScrollOnClick(indexCurrentCard, index, "list-card", "card")

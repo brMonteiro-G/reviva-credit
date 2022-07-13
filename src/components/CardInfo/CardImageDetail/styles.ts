@@ -7,7 +7,7 @@ interface CardProps {
 export const Card = styled.div<CardProps>`
   width: 10rem;
   height: 6rem;
-  background-color: ${(props) => props.theme.colors.primary_color};
+  background-color: ${(prop) => prop.color};
   border-radius: 0.5em;
   background-image: url(${(props) => props.urlImage});
   background-repeat: no-repeat;

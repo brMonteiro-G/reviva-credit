@@ -1,3 +1,4 @@
+import { converterDataStringToDate } from "@/functions";
 import { serviceTransactions } from "@/services/ServiceTransactions";
 import { ICard } from "@/types/ICard";
 import { ITransaction } from "@/types/ITransaction";
@@ -17,12 +18,16 @@ interface TransactionsContextProps {
   calculateTotal: () => number;
   transactionsByCard: ITransaction[];
   getTransactionsByCard: (card: ICard) => void;
+  orderInvoiceByMonth: (
+    month: number
+  ) => ITransaction[];
 }
 
 export const TransactionsContext = createContext<TransactionsContextProps>({
   calculateTotal: () => 0,
   transactionsByCard: [],
   getTransactionsByCard: () => {},
+  orderInvoiceByMonth: () => [],
 });
 TransactionsContext.displayName = "transactions";
 
@@ -31,12 +36,32 @@ const TransactionsProvider = ({ children }: TransactionsProviderProps) => {
     []
   );
 
+  const orderInvoiceByMonth = (
+    month: number
+  ): ITransaction[] => {
+    const transactions = transactionsByCard
+    const transactionsByMonth = transactions.filter((transaction) => {
+      const transactionDate = converterDataStringToDate(
+        transaction.date
+      ).getMonth();
+      return transactionDate === month;
+    });
+    return transactionsByMonth;
+  };
+
+  const orderTransactions = (transactions: ITransaction[]) => {
+    return transactions.sort((a, b) => {
+      return new Date(b.date).getTime() - new Date(a.date).getTime();
+    });
+  };
+
   const getTransactionsByCard = async (card: ICard) => {
     const transactions = await serviceTransactions();
     if (transactions) {
       const transactionsFiltered = transactions.filter(
         (transaction) => transaction.cardId === card?.id
       );
+      orderTransactions(transactionsFiltered);
       return setTransactionsByCard(transactionsFiltered);
     }
   };
@@ -58,7 +83,12 @@ const TransactionsProvider = ({ children }: TransactionsProviderProps) => {
 
   return (
     <TransactionsContext.Provider
-      value={{ getTransactionsByCard, transactionsByCard, calculateTotal }}
+      value={{
+        getTransactionsByCard,
+        transactionsByCard,
+        calculateTotal,
+        orderInvoiceByMonth,
+      }}
     >
       {children}
     </TransactionsContext.Provider>

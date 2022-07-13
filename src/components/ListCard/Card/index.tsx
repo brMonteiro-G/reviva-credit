@@ -1,3 +1,4 @@
+import { formatDate } from "@/functions";
 import { theme } from "@/styles/ThemeProvider";
 import {
   CvvCard,
@@ -15,11 +16,11 @@ interface CardProps {
   brand: string;
   number: string;
   cvv: string;
-  dueDate: number;
+  expiresIn: string;
   onClick?: () => void;
 }
 
-const Card = ({ name, brand, number, cvv, dueDate, onClick }: CardProps) => {
+const Card = ({ name, brand, number, cvv, expiresIn, onClick }: CardProps) => {
   let color = theme.colors.primary_color;
 
   if (brand === "visa") {
@@ -32,10 +33,10 @@ const Card = ({ name, brand, number, cvv, dueDate, onClick }: CardProps) => {
       <NameClientCard>{name}</NameClientCard>
       <NumberCard>{number}</NumberCard>
       <WrapperCardDetails>
-        <DateCard>{dueDate.toString().padStart(2, "0")}/05/26</DateCard>
+        <DateCard>{formatDate(expiresIn, true)}</DateCard>
         <CvvCard>{cvv}</CvvCard>
       </WrapperCardDetails>
-      <FlagCard src={`/images/${brand}.svg`} alt="bandeira master card" />
+      <FlagCard src={`/images/${brand}.svg`} alt={`cartão ${brand}`} />
     </WrapperCard>
   );
 };

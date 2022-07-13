@@ -1,3 +1,4 @@
+import { addCardNumberMask } from "@/functions";
 import { serviceCards } from "@/services/ServiceCards";
 import { ICard } from "@/types/ICard";
 import { IUser } from "@/types/IUser";
@@ -39,6 +40,7 @@ const CardsProvider = ({ children }: CardsContextProps) => {
       const cardsFiltered = getAllCards.filter(
         (card) => card.userId === userCard.id
       );
+      addCardNumberMask(cardsFiltered);
       return setCards(cardsFiltered);
     }
   };
