@@ -23,6 +23,7 @@ export const PointerTriangle = styled.div<IColorMonthItem>`
   position: absolute;
   top: 3.2em;
   transform: rotateZ(45deg);
+  transition: 1s all;
   width: 1.7em;
 `;
 
@@ -34,6 +35,7 @@ export const WrapperMonthItem = styled.section<IColorMonthItem>`
   overflow: auto;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
+  transition: 1s all;
   width: 375px;
   &::-webkit-scrollbar {
     display: none;

@@ -83,3 +83,11 @@ export const DivShowAll = styled.div`
     -webkit-tap-highlight-color: transparent;
   }
 `;
+
+export const NoTransactions = styled.p`
+  align-self: center;
+  color: white;
+  font-size: ${(props) => props.theme.fonts.font_size_text_small};
+  font-weight: ${(props) => props.theme.fonts.font_weight_contrast};
+  margin: auto 0;
+`;

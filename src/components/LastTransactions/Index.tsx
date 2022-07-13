@@ -2,6 +2,7 @@ import {
   ContainerLastTransactions,
   Content,
   DivShowAll,
+  NoTransactions,
   PaymentDescription,
   PaymentValue,
   Slash,
@@ -11,7 +12,6 @@ import { useTransactions } from "@/contexts/TransactionsContext";
 import { formatDate } from "@/functions";
 import { ITransaction } from "@/types/ITransaction";
 import { Link } from "react-router-dom";
-import { listLastTransactions } from "./listLastTransactions";
 
 interface TransactionsProps {
   page: "first" | "second";
@@ -19,15 +19,13 @@ interface TransactionsProps {
   transactions: ITransaction[];
 }
 export default function LastTransactions({
-  transactionsDisplayed,
+  transactionsDisplayed, 
   page,
-  transactions
+  transactions,
 }: TransactionsProps) {
-
-  
   return (
     <>
-      <ContainerLastTransactions itemProp={page}>
+      <ContainerLastTransactions itemProp={page} data-testid="dataTestId">
         <>
           {page === "first" && (
             <Title>
@@ -35,9 +33,11 @@ export default function LastTransactions({
               <p>movimentações</p>
             </Title>
           )}
-          {transactions
-            .slice(0, transactionsDisplayed)
-            .map((transactions) => (
+
+          {transactions.length <= 0 ? (
+            <NoTransactions>VOCÊ NÃO GASTOU ESSE MÊS &#128515;</NoTransactions>
+          ) : (
+            transactions.slice(0, transactionsDisplayed).map((transactions) => (
               <Content itemProp={page} key={transactions.id}>
                 <PaymentDescription>
                   <p>{formatDate(transactions.date)}</p>
@@ -49,7 +49,9 @@ export default function LastTransactions({
                   <p>- {transactions.value.toFixed(2).replace(".", ",")}</p>
                 </PaymentValue>
               </Content>
-            ))}
+            ))
+          )}
+          {/* {} */}
           {page === "first" ? (
             <DivShowAll>
               <Link to="/details">VER MAIS</Link>

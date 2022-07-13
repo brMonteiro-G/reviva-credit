@@ -11,21 +11,24 @@ interface CardInfoProps {
   user: IUser;
   month: number;
   status: "Pago" | "Aberta" | "Fechada";
+  amount: number;
 }
 
-const CardInfo = ({ card, user, month, status }: CardInfoProps) => {
+const CardInfo = ({ card, user, month, status, amount }: CardInfoProps) => {
   const monthFormatted = (month + 1).toString().padStart(2, "0");
-  const { calculateTotal } = useTransactions();
   return (
-    <SC.SectionCard>
-      <CardImageDetail
+    <SC.SectionCard> 
+      <CardImageDetail 
         brand={card.brand}
         nameCardUser={user.name}
         numberCard={card.number}
       />
       <SC.DivSeparator>
         <div>
-          <CardInfoDetail label={"Total"} value={formactPrice(calculateTotal())} />
+          <CardInfoDetail
+            label={"Total"}
+            value={formactPrice(amount)}
+          />
           <CardInfoDetail
             label={"Vencimento"}
             value={`${card.dueDate}/${monthFormatted}`}

@@ -18,9 +18,7 @@ interface TransactionsContextProps {
   calculateTotal: () => number;
   transactionsByCard: ITransaction[];
   getTransactionsByCard: (card: ICard) => void;
-  orderInvoiceByMonth: (
-    month: number
-  ) => ITransaction[];
+  orderInvoiceByMonth: (month: number) => ITransaction[];
 }
 
 export const TransactionsContext = createContext<TransactionsContextProps>({
@@ -36,10 +34,8 @@ const TransactionsProvider = ({ children }: TransactionsProviderProps) => {
     []
   );
 
-  const orderInvoiceByMonth = (
-    month: number
-  ): ITransaction[] => {
-    const transactions = transactionsByCard
+  const orderInvoiceByMonth = (month: number): ITransaction[] => {
+    const transactions = transactionsByCard;
     const transactionsByMonth = transactions.filter((transaction) => {
       const transactionDate = converterDataStringToDate(
         transaction.date
@@ -67,11 +63,14 @@ const TransactionsProvider = ({ children }: TransactionsProviderProps) => {
   };
 
   const calculateTotal = () => {
-    const mesAtual = new Date().getMonth() - 1;
+    const currentDate = new Date();
     const total = transactionsByCard
       .filter((transaction) => {
-        const dateLimit = new Date(transaction.date);
-        return dateLimit.getMonth() === mesAtual;
+        const transactionDate = new Date(transaction.date);
+        return (
+          transactionDate.getMonth() === currentDate.getMonth() - 1 &&
+          transactionDate.getDate() >= currentDate.getDate()
+        );
       })
       .reduce((prev, acm) => (prev += acm.value), 0);
     return total;
