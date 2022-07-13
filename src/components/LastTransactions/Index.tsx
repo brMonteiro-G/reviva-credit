@@ -20,7 +20,7 @@ export default function LastTransactions({
 }: TransactionsProps) {
   return (
     <>
-      <ContainerLastTransactions itemProp={page}>
+      <ContainerLastTransactions itemProp={page} data-testid="dataTestId">
         <>
           {page === "first" ? (
             <Title>
