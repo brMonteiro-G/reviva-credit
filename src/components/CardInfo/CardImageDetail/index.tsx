@@ -19,7 +19,7 @@ const CardImageDetail = ({
   }
 
   return (
-    <SC.ContainerInfoMain>
+    <SC.ContainerInfoMain  role={'cardContent'}>
       <SC.Card color={color} urlImage={`/images/${brand}.svg`} />
       <SC.ContainerNameAndNumber>
         <h2>{nameCardUser}</h2>

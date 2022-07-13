@@ -12,7 +12,6 @@ import { useTransactions } from "@/contexts/TransactionsContext";
 import { formatDate } from "@/functions";
 import { ITransaction } from "@/types/ITransaction";
 import { Link } from "react-router-dom";
-import { listLastTransactions } from "./listLastTransactions";
 
 interface TransactionsProps {
   page: "first" | "second";
@@ -20,13 +19,13 @@ interface TransactionsProps {
   transactions: ITransaction[];
 }
 export default function LastTransactions({
-  transactionsDisplayed,
+  transactionsDisplayed, 
   page,
   transactions,
 }: TransactionsProps) {
   return (
     <>
-      <ContainerLastTransactions itemProp={page}>
+      <ContainerLastTransactions itemProp={page} data-testid="dataTestId">
         <>
           {page === "first" && (
             <Title>

@@ -17,8 +17,8 @@ interface CardInfoProps {
 const CardInfo = ({ card, user, month, status, amount }: CardInfoProps) => {
   const monthFormatted = (month + 1).toString().padStart(2, "0");
   return (
-    <SC.SectionCard>
-      <CardImageDetail
+    <SC.SectionCard> 
+      <CardImageDetail 
         brand={card.brand}
         nameCardUser={user.name}
         numberCard={card.number}

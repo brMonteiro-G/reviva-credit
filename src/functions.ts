@@ -1,7 +1,7 @@
 import { ICard } from "./types/ICard";
 import { ITransaction } from "./types/ITransaction";
 
-export const formactPrice = (preco: number): string =>
+export const formactPrice = (preco: number): string => 
 new Intl.NumberFormat("pt-BR", {
   style: "currency",
   currency: "BRL",
