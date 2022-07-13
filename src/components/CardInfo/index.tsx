@@ -17,8 +17,8 @@ const CardInfo = ({ card, user, month, status }: CardInfoProps) => {
   const monthFormatted = (month + 1).toString().padStart(2, "0");
   const { calculateTotal } = useTransactions();
   return (
-    <SC.SectionCard>
-      <CardImageDetail
+    <SC.SectionCard> 
+      <CardImageDetail 
         brand={card.brand}
         nameCardUser={user.name}
         numberCard={card.number}

@@ -49,5 +49,10 @@
   "devDependencies": {
     "@types/styled-components": "^5.1.25",
     "tsconfig-paths": "^4.0.0"
-  }
+  },
+  "jest": {
+    "moduleNameMapper": {
+        "^@/(.*)$": "<rootDir>/src/$1"
+    }
+}
 }
