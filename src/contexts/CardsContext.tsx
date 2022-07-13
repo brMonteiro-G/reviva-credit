@@ -33,19 +33,13 @@ const CardsProvider = ({ children }: CardsContextProps) => {
   const { users } = useUsers();
   const userCard = users[1];
 
-  // const getTransactionsByCard = async (card: ICard) => {
-  //   const transactions = await serviceTransactions();
-  //   const transactionsFiltered = transactions.filter(transaction => transaction.cardId === card.id);
-  //   return transactionsFiltered;
-  // }
-
   const getCardsByUser = async () => {
     const getAllCards = await serviceCards();
     if (userCard) {
       const cardsFiltered = getAllCards.filter(
         (card) => card.userId === userCard.id
       );
-      setCards(cardsFiltered);
+      return setCards(cardsFiltered);
     }
   };
 

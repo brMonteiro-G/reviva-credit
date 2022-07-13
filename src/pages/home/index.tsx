@@ -8,19 +8,17 @@ import { Outlet } from "react-router-dom";
 
 const Home = () => {
   const { userCard } = useCard();
-  
-  console.log("Home");
 
-  if(!userCard) {
-    return <Loading />
+  if (!userCard) {
+    return <Loading />;
   }
 
   return (
     <>
       <Header
-        title={"Bem vindo ao "}
-        subtitle={"Reviva Credit"}
-        regards={"Olá, "}
+        title={"Bem vindo ao "}
+        subtitle={`Reviva Credit`}
+        regards={"Olá, "}
         user={userCard.name}
       />
       <CarouselCard />
