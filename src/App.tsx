@@ -1,9 +1,10 @@
-import React from 'react';
+
+import CardInfo from "./components/CardInfo";
 
 function App() {
   return (
-    <div >
-      Hello World
+    <div>
+      {/* <CardInfo /> */}
     </div>
   );
 }
