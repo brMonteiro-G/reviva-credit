@@ -34,22 +34,12 @@ const LimitBar = () => {
       </SC.Title>
       <Bar widthBar={virifyPercent} />
       <SC.ContainerInfoCredit>
-        {virifyPercent >= 100 ? (
-          <InfoCredit
-            position="left"
-            title={"Utilizado"}
-            value={formactPrice(calculateTotal())}
-            warning={true}
-          />
-        ) : (
-          <InfoCredit
-            position="left"
-            title={"Utilizado"}
-            value={formactPrice(calculateTotal())}
-            warning={false}
-          />
-        )}
-
+        <InfoCredit
+          position="left"
+          title={"Utilizado"}
+          value={formactPrice(calculateTotal())}
+          warning={false}
+        />
         <InfoCredit
           position="right"
           title={"Disponível"}
